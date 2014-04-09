@@ -3,7 +3,7 @@
 {% block title %}AngularJS, Django: Todo Application | Home{% endblock title %}
 
 {% block login_link %}
-    <li class="active"><a href="/login">Login</a></li>
+    <li class="active"><a href="/">Login</a></li>
 {% endblock login_link %}
 
 {% block content %}
@@ -27,7 +27,18 @@
             <span ng-show="hasError('password')">Password is required</span>
             <span ng-show="errorPassword">{% verbatim %} {{ errorPassword }} {% endverbatim %}</span>
 
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
+            <br>
+        </form>
+        <form class="form-signin" action="/create_user">
+            {% csrf_token %}
+            <button class="btn btn-lg btn-primary btn-block" type="submit" style="margin-top: -43px;">
+                Create Account
+            </button>
+            <div style="font-size: 8px;">
+            <p class="text-muted">You don't need an account to use this app<br> But if you wish to be able to view your
+                work history, and do this again, account creation is suggested </p>
+            </div>
         </form>
     </div>
 {% endblock content %}

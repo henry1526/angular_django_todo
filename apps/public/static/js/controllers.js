@@ -36,7 +36,7 @@ angular.module('todoApp.controllers', [])
         var baseTodo = Restangular.all('api/todo');
 
         baseTodo.customGETLIST($scope.user.user_id)
-            .then(function(data) {
+            .then(function (data) {
                 reloadTodos(data);
             });
 
@@ -93,7 +93,7 @@ angular.module('todoApp.controllers', [])
 
         $scope.removeTodo = function (todo) {
             baseTodo.all($scope.user.user_id).remove(todo)
-                .then(function(data) {
+                .then(function (data) {
                     reloadTodos(data);
 
                     toastr.success('You successfully removed your todo!');

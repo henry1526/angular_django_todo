@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 
-{% block title %}AngularJS, Django: Todo Application | Todo{% endblock title %}
+{% block title %}My schedule |{% endblock title %}
 
 {% block todo_link %}
-    <li class="active"><a href="/todos">Current Todo List</a></li>{% endblock todo_link %}
+    <li class="active"><a href="/todos">My schedule</a></li>{% endblock todo_link %}
 
 {% block content %}
     {% verbatim %}
     <div ng-controller="TodoController">
-        <h2 class="sub-header">Current Todos</h2>
+        <h2 class="sub-header">My schedule</h2>
 
-        <p id="empty" ng-hide="todos.length || !loaded">There are currently no todos.</p>
+        <p id="empty" ng-hide="todos.length || !loaded">You have nothing planned :(</p>
 
         <form class="form-inline">
             <input id="todo-title" type="text" class="form-control" ng-model="todo.title" placeholder="Title"/><br/>
@@ -24,14 +24,12 @@
                 Show completed <input type="checkbox" data-ng-model='types.completed'/>
             </div>
             <div class="text-right col-md-3">
-                <div class="input-group">
-                    <input type="text" class="form-control" data-ng-model="search">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                    </span>
-                </div><!-- /input-group -->
+                <!--THIS IS WHERE THE SEARCH BAR CODE WENT, PUT IT HERE IF YOU WANT IT BACK-->
+                <!--THIS IS WHERE THE SEARCH BAR CODE WENT, PUT IT HERE IF YOU WANT IT BACK-->
+                <!--THIS IS WHERE THE SEARCH BAR CODE WENT, PUT IT HERE IF YOU WANT IT BACK-->
+                <!--THIS IS WHERE THE SEARCH BAR CODE WENT, PUT IT HERE IF YOU WANT IT BACK-->
+                <!--THIS IS WHERE THE SEARCH BAR CODE WENT, PUT IT HERE IF YOU WANT IT BACK-->
+                <!-- /input-group -->
                 <!-- /input-group -->
             </div>
         </div>
@@ -47,7 +45,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="todo in todos | todoFilter:types | todoSearchFilter:search" style="text-align: left;">
+                    <tr ng-repeat="todo in todos | todoFilter:types | todoSearchFilter:search"
+                        style="text-align: left;">
                         <td>
                             <label class="checkbox">
                                 <input type="checkbox" ng-checked="todo.completed" ng-model="todo.completed"

@@ -12,6 +12,6 @@
     "toastr": "2.0.1"
   },
   "resolutions": {
-    "angular": "1.2.14"
+    "angular": "1.2.15"
   }
 }

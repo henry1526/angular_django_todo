@@ -13,5 +13,12 @@ urlpatterns = patterns('apps.public',
     url(r'^todos-django$', 'views.todos_django', name="todo_list_django"),
     url(r'^logout$', 'views.logout', name="user_logout"),
     url(r'^login$', 'views.login', name="user_login"),
+    # url(r'^create$', 'views.create', name="create"),
+    url(r'^bmi$', 'views.bmi', name="bmi"),
+    url(r'^workout$', 'views.workout', name="workout"),
+    url(r'^time$', 'views.time', name="time"),
+    url(r'^calories$', 'views.calories', name="calories"),
+    url(r'^thanks$', 'views.thanks', name="thanks"),
+    url(r'^create_user$','views.create_user', name='create_user'),
     url(r'^$', 'views.home', name="home"),
-)
+    )

@@ -152,3 +152,43 @@ def logout(request):
 @require_http_methods(["GET"])
 def home(request):
     return render(request, 'partials/home.tpl.html')
+
+
+def title(request):
+    return render(request, 'partials/Calorie Counting title page.html')
+
+
+def bmi(request):
+    return render(request, 'partials/Calorie Counting BMI.html')
+
+
+def workout(request):
+    return render(request, 'partials/Calorie Counting Workout.html')
+
+
+def time(request):
+    return render(request, 'partials/Calorie Counting how much time prompt.html')
+
+
+def calories(request):
+    return render(request, 'partials/Calorie Counting how many calories prompt.html')
+
+
+def thanks(request):
+    return render(request, 'partials/Calorie Counting thank the user.html')
+
+
+def create_user(request):
+    if request.method == 'POST':
+        first_name = request.POST.get('first_name', request.POST['first_name'])
+        last_name = request.POST.get('last_name', request.POST['last_name'])
+        email = request.POST.get('email', request.POST['email'])
+        username = request.POST.get('username', request.POST['username'])
+        password = request.POST.get('password', request.POST['password'])
+
+        #validation
+        if first_name == '' or last_name == '' or email == '' or username == '' or password == '':
+            render(request, 'partials/create_user.tpl.html', {'message': 'All fields are required!'})
+
+    else:
+        return render(request, 'partials/create_user.tpl.html')
