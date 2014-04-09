@@ -41,3 +41,6 @@ apps/public/lib
 project.db
 staticfiles
 local_settings.py
+
+angular_todo_app.db
+npm-debug.log

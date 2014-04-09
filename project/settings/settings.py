@@ -201,7 +201,6 @@ LOGGING = {
 }
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.file'
-SESSION_FILE_PATH = 'c:\Users\Olsen'
 
 try:
 	from project.settings.local_settings import *
