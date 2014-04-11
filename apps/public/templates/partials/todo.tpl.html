@@ -1,76 +1,76 @@
-{% extends "base.html" %}
-
-{% block title %}My schedule |{% endblock title %}
-
-{% block todo_link %}
-    <li class="active"><a href="/todos">My schedule</a></li>{% endblock todo_link %}
-
-{% block content %}
-    {% verbatim %}
-    <div ng-controller="TodoController">
-        <h2 class="sub-header">My schedule</h2>
-
-        <p id="empty" ng-hide="todos.length || !loaded">You have nothing planned :(</p>
-
-        <form class="form-inline">
-            <input id="todo-title" type="text" class="form-control" ng-model="todo.title" placeholder="Title"/><br/>
-            <input id="todo-description" type="text" class="form-control" ng-model="todo.description"
-                   placeholder="Description"/></br><br/>
-            <button id="add-btn" class="btn btn-success" ng-click="addTodo(todo);">Add</button>
-        </form>
-
-        <div class="row">
-            <div class="text-left col-md-9">
-                Show completed <input type="checkbox" data-ng-model='types.completed'/>
-            </div>
-            <div class="text-right col-md-3">
-                <!--THIS IS WHERE THE SEARCH BAR CODE WENT, PUT IT HERE IF YOU WANT IT BACK-->
-                <!--THIS IS WHERE THE SEARCH BAR CODE WENT, PUT IT HERE IF YOU WANT IT BACK-->
-                <!--THIS IS WHERE THE SEARCH BAR CODE WENT, PUT IT HERE IF YOU WANT IT BACK-->
-                <!--THIS IS WHERE THE SEARCH BAR CODE WENT, PUT IT HERE IF YOU WANT IT BACK-->
-                <!--THIS IS WHERE THE SEARCH BAR CODE WENT, PUT IT HERE IF YOU WANT IT BACK-->
-                <!-- /input-group -->
-                <!-- /input-group -->
-            </div>
-        </div>
-
-        <div class="table-responsive">
-            <table class="table table-striped table-hover table-condensed">
-                <thead>
-                    <tr>
-                        <th style="width: 10%">Complete</th>
-                        <th style="width: 20%">Title</th>
-                        <th style="width: 40%">Description</th>
-                        <th style="width: 30%">&nbsp;</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="todo in todos | todoFilter:types | todoSearchFilter:search"
-                        style="text-align: left;">
-                        <td>
-                            <label class="checkbox">
-                                <input type="checkbox" ng-checked="todo.completed" ng-model="todo.completed"
-                                       ng-change="changeCompleted(todo)"/>
-                            </label>
-                        </td>
-                        <td>
-                            <span editable-text="todo.title"
-                                  onbeforesave="changeTitle($data, todo.id)">{{ todo.title }}</span>
-                        </td>
-                        <td>
-                            <span editable-text="todo.description" onbeforesave="changeDescription($data, todo.id)">{{ todo.description }}</span>
-                        </td>
-                        <td style="text-align: right;">
-                            <div ng-show="deleteButton">Delete Todo?
-                                <button class="btn btn-danger" ng-click="removeTodo(todo)">Yes</button>
-                                <button class="btn btn-info" ng-click="cancelDelete()">No</button>
-                            </div>
-                            <button class="btn btn-danger" ng-hide="deleteButton" ng-click="confirm()">Delete</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    {% endverbatim %}
-{% endblock content %}
+{#{% extends "base.html" %}#}
+{##}
+{#{% block title %}My schedule |{% endblock title %}#}
+{##}
+{#{% block todo_link %}#}
+{#    <li class="active"><a href="/todos">My schedule</a></li>{% endblock todo_link %}#}
+{##}
+{#{% block content %}#}
+{#    {% verbatim %}#}
+{#    <div ng-controller="TodoController">#}
+{#        <h2 class="sub-header">My schedule</h2>#}
+{##}
+{#        <p id="empty" ng-hide="todos.length || !loaded">You have nothing planned :(</p>#}
+{##}
+{#        <form class="form-inline">#}
+{#            <input id="todo-title" type="text" class="form-control" ng-model="todo.title" placeholder="Title"/><br/>#}
+{#            <input id="todo-description" type="text" class="form-control" ng-model="todo.description"#}
+{#                   placeholder="Description"/></br><br/>#}
+{#            <button id="add-btn" class="btn btn-primary" ng-click="addTodo(todo);">Add</button>#}
+{#        </form>#}
+{##}
+{#        <div class="row">#}
+{#            <div class="text-left col-md-9">#}
+{#                Show completed <input type="checkbox" data-ng-model='types.completed'/>#}
+{#            </div>#}
+{#            <div class="text-right col-md-3">#}
+{#                <!--THIS IS WHERE THE SEARCH BAR CODE WENT, PUT IT HERE IF YOU WANT IT BACK-->#}
+{#                <!--THIS IS WHERE THE SEARCH BAR CODE WENT, PUT IT HERE IF YOU WANT IT BACK-->#}
+{#                <!--THIS IS WHERE THE SEARCH BAR CODE WENT, PUT IT HERE IF YOU WANT IT BACK-->#}
+{#                <!--THIS IS WHERE THE SEARCH BAR CODE WENT, PUT IT HERE IF YOU WANT IT BACK-->#}
+{#                <!--THIS IS WHERE THE SEARCH BAR CODE WENT, PUT IT HERE IF YOU WANT IT BACK-->#}
+{#                <!-- /input-group -->#}
+{#                <!-- /input-group -->#}
+{#            </div>#}
+{#        </div>#}
+{##}
+{#        <div class="table-responsive">#}
+{#            <table class="table table-striped table-hover table-condensed">#}
+{#                <thead>#}
+{#                    <tr>#}
+{#                        <th style="width: 10%">Complete</th>#}
+{#                        <th style="width: 20%">Title</th>#}
+{#                        <th style="width: 40%">Description</th>#}
+{#                        <th style="width: 30%">&nbsp;</th>#}
+{#                    </tr>#}
+{#                </thead>#}
+{#                <tbody>#}
+{#                    <tr ng-repeat="todo in todos | todoFilter:types | todoSearchFilter:search"#}
+{#                        style="text-align: left;">#}
+{#                        <td>#}
+{#                            <label class="checkbox">#}
+{#                                <input type="checkbox" ng-checked="todo.completed" ng-model="todo.completed"#}
+{#                                       ng-change="changeCompleted(todo)"/>#}
+{#                            </label>#}
+{#                        </td>#}
+{#                        <td>#}
+{#                            <span editable-text="todo.title"#}
+{#                                  onbeforesave="changeTitle($data, todo.id)">{{ todo.title }}</span>#}
+{#                        </td>#}
+{#                        <td>#}
+{#                            <span editable-text="todo.description" onbeforesave="changeDescription($data, todo.id)">{{ todo.description }}</span>#}
+{#                        </td>#}
+{#                        <td style="text-align: right;">#}
+{#                            <div ng-show="deleteButton">Delete Todo?#}
+{#                                <button class="btn btn-danger" ng-click="removeTodo(todo)">Yes</button>#}
+{#                                <button class="btn btn-info" ng-click="cancelDelete()">No</button>#}
+{#                            </div>#}
+{#                            <button class="btn btn-danger" ng-hide="deleteButton" ng-click="confirm()">Delete</button>#}
+{#                        </td>#}
+{#                    </tr>#}
+{#                </tbody>#}
+{#            </table>#}
+{#        </div>#}
+{#    </div>#}
+{#    {% endverbatim %}#}
+{#{% endblock content %}#}

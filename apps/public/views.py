@@ -12,6 +12,7 @@ from urlparse import parse_qs
 from django.contrib.auth.models import User
 from .models import Todo
 
+
 @require_http_methods(["GET", "POST", "PUT", "DELETE", "OPTIONS"])
 def todo_api(request, user_id):
     user = User.objects.get(pk=user_id)
@@ -71,11 +72,11 @@ def todo_api(request, user_id):
 # Django Views
 @login_required(function=None, redirect_field_name=None, login_url='/login')
 @require_http_methods(["GET"])
-def todos(request):
-    response = {}
-    user = request.user
-    response['todos'] = Todo.objects.filter(user_id=user.id).order_by('create_date')
-    return render(request, 'partials/todo.tpl.html', response)
+# def todos(request):
+#     response = {}
+#     user = request.user
+#     response['todos'] = Todo.objects.filter(user_id=user.id).order_by('create_date')
+#     return render(request, 'partials/todo.tpl.html', response)
 
 
 @login_required(function=None, redirect_field_name=None, login_url='/login')
@@ -160,6 +161,11 @@ def title(request):
 
 def bmi(request):
     return render(request, 'partials/Calorie Counting BMI.html')
+    # UserProperties = request.user
+    #
+    # if "gender" in request.QUERY_PARAMS:
+    # if "weight" in request.QUERY_PARAMS:
+
 
 
 def workout(request):

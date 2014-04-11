@@ -9,7 +9,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>{% block title %}Base Title - should never see{% endblock title %}</title>
+        <title>{% block title %}Calorie Counting |{% endblock title %}</title>
 
         <link href="{% static 'lib/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet"/>
         <link href="{% static 'lib/angular-xeditable/dist/css/xeditable.css' %}" rel="stylesheet"/>
@@ -53,9 +53,6 @@
                             {% endblock login_link %}
 
                             {% if user.username %}
-                                {% block todo_link %}
-                                    <li><a href="/todos">Workout Schedule</a></li>
-                                {% endblock todo_link %}
                                 {% block django_todo_link %}
                                     <li><a href="/todos-django">Workout History</a></li>
                                 {% endblock django_todo_link %}
@@ -80,21 +77,6 @@
                 {% block content %} Base content - should never see {% endblock content %}
 
                 <hr/>
-
-                <div style="text-align: left;">
-                    <pre>
-                        User:
-                        {% if user %}
-                            Username: {{ user.username }}
-                            Password: {{ user.password }}
-                            First Name: {{ user.first_name }}
-                            Last Name: {{ user.last_name }}
-                            Email: {{ user.email }}
-                            Test: {{ request.session.test }}
-                        {% endif %}
-                    </pre>
-                </div>
-
                 {% block footer %}
                     <hr/>
 

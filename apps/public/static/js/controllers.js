@@ -28,6 +28,34 @@ angular.module('todoApp.controllers', [])
     .controller('HomeController', ['$scope', function ($scope) {
         $scope.heading = 'Home Page';
     }])
+
+    .controller('CaloriesPromptController', ['$scope', function ($scope) {
+        $scope.heading = '';
+        $scope.calculateCalories = function (weight, male, female) {
+            var sportsCalories;
+            var weightlifting;
+            var cardio;
+            var yoga;
+            var crossfit;
+
+            if (male) {
+                 sportsCalories = .6 * weight;
+                 weightlifting = .45 * weight;
+                 cardio = .3 * weight;
+                 yoga = .22 * weight;
+                 crossfit = .54 * weight;
+            }
+            else if (female) {
+                sportsCalories = .48 * weight;
+                weightlifting = .36 * weight;
+                cardio = .24 * weight;
+                yoga = .18 * weight;
+                crossfit = .44 * weight;
+            }
+         }
+
+    }])
+
     .controller('TodoController', ['$scope', '$http', 'Restangular', 'SessionService', function ($scope, $http, Restangular, SessionService) {
         $scope.todos = [];
         $scope.types = {completed: false};
@@ -47,7 +75,7 @@ angular.module('todoApp.controllers', [])
                     $scope.todo.title = '';
                     $scope.todo.description = '';
 
-                    toastr.success('You successfully added a new todo!');
+                    toastr.success('Workout added');
                 });
         };
 
@@ -56,7 +84,7 @@ angular.module('todoApp.controllers', [])
                 .then(function (data) {
                     reloadTodos(data);
 
-                    toastr.success('You successfully changed the status of your todo!');
+                    toastr.success('Workout Removed');
                 });
         };
 
@@ -96,7 +124,7 @@ angular.module('todoApp.controllers', [])
                 .then(function (data) {
                     reloadTodos(data);
 
-                    toastr.success('You successfully removed your todo!');
+                    toastr.success('Workout Deleted');
                 });
         };
 

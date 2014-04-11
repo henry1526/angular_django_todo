@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}AngularJS, Django: Todo Application | Todo{% endblock title %}
+{% block title %}My History |{% endblock title %}
 
 {% block django_todo_link %}
     <li class="active"><a href="/todos-django">My history</a></li>
@@ -14,7 +14,7 @@
             <input id="title" type="text" class="form-control" name="todo.title" placeholder="Title"/><br/>
             <input id="description" type="text" class="form-control" name="todo.description"
                    placeholder="Description"/></br><br/>
-            <button id="add-btn" class="btn btn-success" onclick="addTodoDjango('title', 'description', {{ user.id }})">
+            <button id="add-btn" class="btn btn-primary" onclick="addTodoDjango('title', 'description', {{ user.id }})">
                 Add
             </button>
         </form>
@@ -181,7 +181,7 @@
 
         function removeTodoDjango(todoId, userId) {
             var todo = {
-                "id": todoId,
+                "id": todoId
             }
 
             $.ajax({
